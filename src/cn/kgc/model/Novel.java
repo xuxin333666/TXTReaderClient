@@ -50,7 +50,7 @@ public class Novel implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return name + "\t" + author + "\t" + describe + "\n";
+		return name + "\t" + author + "\t" + describe;
 	}
 	@Override
 	public int hashCode() {

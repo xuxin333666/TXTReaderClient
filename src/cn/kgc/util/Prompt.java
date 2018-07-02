@@ -26,6 +26,7 @@ public interface Prompt {
 	String LOGIN_SUCCUSS = "登陆成功！！";	//用户登陆成功后的提示
 	String RETURN_MAIN_MENU = "返回上一级菜单";	//返回上一级菜单的提示
 	String GET_NOVE_ERORR = "该类型没有相应数据，请联系管理员";	//找不到小说时的提示
+	String NOVE_LIST_PRINT = "序号\t小说名\t作者\t简介";	//小说列表输出
 	int MAIN_MENU = 1;	//主菜单
 	int SECOND_MENU = 2;	//二级菜单
 }
