@@ -4,7 +4,7 @@ import cn.kgc.model.DataTransmission;
 import cn.kgc.service.intf.Service;
 import cn.kgc.util.Prompt;
 
-public class WuxiaServiceImpl implements Service,Prompt{
+public class NovelServiceImpl implements Service,Prompt{
 	 /**
 	  * 构建武侠数据传输对象
 	  */
