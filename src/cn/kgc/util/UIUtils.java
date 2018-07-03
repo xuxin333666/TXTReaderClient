@@ -15,10 +15,10 @@ import java.util.Set;
 import cn.kgc.ui.intf.MainUI;
 
 public class UIUtils implements Prompt {
-	private static Map<String, String> MainList = new HashMap<>();	//主菜单功能列表
-	private static Map<String, String> secondList = new HashMap<>();	//二级菜单功能列表
-	private static Map<String, String> thirdList = new HashMap<>();	//三级菜单功能列表
-	private static Map<String, String> commandMap = new HashMap<>();	//协议命令容器
+	public static Map<String, String> MainList = new HashMap<>();	//主菜单功能列表
+	public static Map<String, String> secondList = new HashMap<>();	//二级菜单功能列表
+	public static Map<String, String> thirdList = new HashMap<>();	//三级菜单功能列表
+	public static Map<String, String> commandMap = new HashMap<>();	//协议命令容器
 	/**
 	 * 初始化界面工具类，读取菜单列表,协议命令列表
 	 */

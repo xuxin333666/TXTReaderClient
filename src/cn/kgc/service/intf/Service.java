@@ -1,7 +1,6 @@
 package cn.kgc.service.intf;
 
 import cn.kgc.model.DataTransmission;
-import cn.kgc.model.Novel;
 
 public interface Service {
 	/**

@@ -5,6 +5,7 @@ import java.util.List;
 import cn.kgc.model.DataTransmission;
 import cn.kgc.model.Novel;
 import cn.kgc.service.intf.Service;
+import cn.kgc.util.NovelUtils;
 import cn.kgc.util.Prompt;
 
 public class NovelServiceImpl implements Service,Prompt{
@@ -26,6 +27,11 @@ public class NovelServiceImpl implements Service,Prompt{
 		switch(num) {
 		case RETURN_BY_USER:
 			data.setStatus(REPEAT);
+			break;
+		case UPLOAD:
+			data.setStatus(COMMAND_AGIN);
+			String command = NovelUtils.getUploadCommandByCommand(data.getCommand());
+			data.setCommand(command);
 			break;
 		default:
 			List<Novel> novelList = (List<Novel>) data.getObject();

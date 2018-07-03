@@ -19,13 +19,15 @@ public class Client implements Prompt{
 	 */
 	@Test
 	public void start() {
-		DataTransmission data = Menu(preMenu);
+		DataTransmission data = Menu(preMenu,true);
 		if(data.getStatus() == SECONDARY_MENU) {
 			preMenu = SECOND_MENU;
 		} else if(data.getStatus() == THIRD_RUN_MENU) {
 			preMenu = THIRD_MENU;
 		} else if(data.getStatus() == RETURN) {
 			preMenu--;
+		} else if(data.getStatus() == COMMAND_AGIN) {
+			data = Menu(preMenu, false, data);
 		}
 		start();
 	}
@@ -33,9 +35,14 @@ public class Client implements Prompt{
 	 * 菜单执行，返回获得数据
 	 * @return
 	 */
-	private DataTransmission Menu(int type) {
-		showMenu(type);
-		String command = userChoose(type);
+	private DataTransmission Menu(int type,boolean flag,DataTransmission...data) {
+		String command = null;
+		if(flag) {
+			showMenu(type);
+			command = userChoose(type);			
+		} else {
+			command = data[0].getCommand();
+		}
 		MainUI mainUI = UIUtils.Parse(command);
 		return sendAndGetData(mainUI,command);
 	}
@@ -49,7 +56,7 @@ public class Client implements Prompt{
 	 */
 	private DataTransmission sendAndGetData(MainUI mainUI,String command) {
 		DataTransmission data = mainUI.start(command);
-		if(data.getStatus() != RETURN) {
+		if(data.getStatus() != RETURN && data.getStatus() != REPEAT) {
 			IOService iOService = new BIOServiceImpl();
 			data = iOService.open(data);
 			return mainUI.after(data);			

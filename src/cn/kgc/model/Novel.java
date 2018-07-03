@@ -11,9 +11,30 @@ public class Novel implements Serializable{
 	private String author;	//作者
 	private String describe;	//简介
 	private String content;	//内容
+	private String type;	//类型
 	private String fileName;	//文件名称
 	
 	
+	/**
+	 * 无参构造方法
+	 */
+	public Novel() {
+
+	}
+	/**
+	 * 有参构造方法
+	 * @param name
+	 * @param author
+	 * @param describe
+	 * @param content
+	 * @param fileName
+	 */
+	public Novel(String name, String author, String describe, String fileName) {
+		this.name = name;
+		this.author = author;
+		this.describe = describe;
+		this.fileName = fileName;
+	}
 	/**
 	 * get、set方法
 	 * @return
@@ -47,6 +68,12 @@ public class Novel implements Serializable{
 	}
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	@Override
 	public String toString() {
