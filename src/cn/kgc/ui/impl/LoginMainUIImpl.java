@@ -18,7 +18,8 @@ public class LoginMainUIImpl implements MainUI,Prompt {
 	 * µÇÂ½Âß¼­
 	 */
 	@Override
-	public DataTransmission start(String command) {
+	public DataTransmission start(DataTransmission data) {
+		String command = data.getCommand();
 		System.out.print(LOGIN_USERNAME_PROMPT);
 		username = input.next();
 		System.out.print(LOGIN_PASSWORD_PROMPT);

@@ -19,7 +19,8 @@ public class RegisterMainUIImpl implements MainUI,Prompt {
 	 * 注册用户，调用注册业务层
 	 */
 	@Override
-	public DataTransmission start(String command) {
+	public DataTransmission start(DataTransmission data) {
+		String command = data.getCommand();
 		getUsername();
 		getPassword();	
 		return service.start(username,password,command);

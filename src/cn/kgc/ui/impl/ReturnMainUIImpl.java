@@ -7,10 +7,9 @@ import cn.kgc.util.Prompt;
 public class ReturnMainUIImpl implements MainUI,Prompt{
 
 	@Override
-	public DataTransmission start(String command) {
+	public DataTransmission start(DataTransmission data) {
 		System.out.println(RETURN_MAIN_MENU);
 		System.out.println(DIVIDER);
-		DataTransmission data = new DataTransmission();
 		data.setStatus(RETURN);
 		return data;
 	}

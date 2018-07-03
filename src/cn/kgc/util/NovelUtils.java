@@ -64,8 +64,17 @@ public class NovelUtils {
 		}
 		return sb.toString();
 	}
+	
+	/**
+	 * 根据小说命令获取相应的上传小说命令
+	 * @param string
+	 * @return
+	 */
 	public static String getUploadCommandByCommand(String string) {	
 		return commandMap.get(string);
 	}
+	
+	
+	
 
 }

@@ -14,21 +14,22 @@ import cn.kgc.util.UIUtils;
 public class Client implements Prompt{
 	Scanner input = new Scanner(System.in);
 	private int preMenu = MAIN_MENU;
+	private DataTransmission preData = new DataTransmission();
 	/**
 	 * 客户端启动
 	 */
 	@Test
 	public void start() {
-		DataTransmission data = Menu(preMenu,true);
-		if(data.getStatus() == SECONDARY_MENU) {
+		preData = Menu(preMenu,true);
+		if(preData.getStatus() == SECONDARY_MENU) {
 			preMenu = SECOND_MENU;
-		} else if(data.getStatus() == THIRD_RUN_MENU) {
+		} else if(preData.getStatus() == THIRD_RUN_MENU) {
 			preMenu = THIRD_MENU;
-		} else if(data.getStatus() == RETURN) {
+		} else if(preData.getStatus() == RETURN) {
 			preMenu--;
-		} else if(data.getStatus() == COMMAND_AGIN) {
-			while(data.getStatus() == COMMAND_AGIN) {
-				data = Menu(preMenu, false, data);			
+		} else if(preData.getStatus() == COMMAND_AGIN) {
+			while(preData.getStatus() == COMMAND_AGIN) {
+				preData = Menu(preMenu,false,preData);			
 			}
 		}
 		start();
@@ -57,13 +58,14 @@ public class Client implements Prompt{
 	 * @return
 	 */
 	private DataTransmission sendAndGetData(MainUI mainUI,String command) {
-		DataTransmission data = mainUI.start(command);
-		if(data.getStatus() != RETURN && data.getStatus() != REPEAT) {
+		preData.setCommand(command);
+		preData = mainUI.start(preData);
+		if(preData.getStatus() != RETURN && preData.getStatus() != REPEAT) {
 			IOService iOService = new BIOServiceImpl();
-			data = iOService.open(data);
-			data =  mainUI.after(data);	
+			preData = iOService.open(preData);
+			preData =  mainUI.after(preData);	
 		}
-		return data;
+		return preData;
 	}
 	/**
 	 * 菜单展示

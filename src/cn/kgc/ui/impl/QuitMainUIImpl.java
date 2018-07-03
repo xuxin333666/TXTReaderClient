@@ -8,7 +8,7 @@ import cn.kgc.util.Prompt;
 public class QuitMainUIImpl implements MainUI,Prompt{
 
 	@Override
-	public DataTransmission start(String command) {
+	public DataTransmission start(DataTransmission data) {
 		System.out.println(SYSTEM_QUIT);
 		System.exit(1);
 		return null;

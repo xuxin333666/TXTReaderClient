@@ -19,7 +19,8 @@ public class NovelUIImpl implements MainUI,Prompt{
 	  * 构建武侠数据传输对象
 	  */
 	@Override
-	public DataTransmission start(String command) {		
+	public DataTransmission start(DataTransmission data) {		
+		String command = data.getCommand();
 		return service.start(command);
 	}
 	 /**

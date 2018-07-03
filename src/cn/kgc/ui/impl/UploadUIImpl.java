@@ -14,8 +14,8 @@ public class UploadUIImpl implements MainUI,Prompt{
 	Scanner input = new Scanner(System.in);
 
 	@Override
-	public DataTransmission start(String command) {
-		DataTransmission data = new DataTransmission(command, getNovel());
+	public DataTransmission start(DataTransmission data) {
+		data.setObject(getNovel());
 		data = service.start(data);
 		if(data.getStatus() == ERORR) {
 			System.out.println(UPLOAD_ERORR_CLIENT);
