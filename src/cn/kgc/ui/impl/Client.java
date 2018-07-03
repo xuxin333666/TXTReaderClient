@@ -27,7 +27,9 @@ public class Client implements Prompt{
 		} else if(data.getStatus() == RETURN) {
 			preMenu--;
 		} else if(data.getStatus() == COMMAND_AGIN) {
-			data = Menu(preMenu, false, data);
+			while(data.getStatus() == COMMAND_AGIN) {
+				data = Menu(preMenu, false, data);			
+			}
 		}
 		start();
 	}
@@ -55,17 +57,13 @@ public class Client implements Prompt{
 	 * @return
 	 */
 	private DataTransmission sendAndGetData(MainUI mainUI,String command) {
-		DataTransmission data;
-		do {
-			data = mainUI.start(command);
-			if(data.getStatus() != RETURN && data.getStatus() != REPEAT) {
-				IOService iOService = new BIOServiceImpl();
-				data = iOService.open(data);
-				data =  mainUI.after(data);	
-			}
-			command = data.getCommand();
-		} while(data.getStatus() == COMMAND_AGIN);
-			return data;
+		DataTransmission data = mainUI.start(command);
+		if(data.getStatus() != RETURN && data.getStatus() != REPEAT) {
+			IOService iOService = new BIOServiceImpl();
+			data = iOService.open(data);
+			data =  mainUI.after(data);	
+		}
+		return data;
 	}
 	/**
 	 * ²Ëµ¥Õ¹Ê¾
