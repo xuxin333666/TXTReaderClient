@@ -29,7 +29,7 @@ public class NovelUIImpl implements MainUI,Prompt{
 	public DataTransmission after(DataTransmission data) {
 		try {
 			showNovelList(data);
-			Novel novel = userChoose();
+			data = userChoose(data);
 		} catch (Exception e) {
 			System.out.println(GET_NOVE_ERORR);
 		}
@@ -54,15 +54,15 @@ public class NovelUIImpl implements MainUI,Prompt{
 	 * ”√ªß—°‘Ò
 	 * @return √¸¡Ó
 	 */
-	private Novel userChoose() {
+	private DataTransmission userChoose(DataTransmission data) {
 		System.out.print(USER_CHOOSE_NOVEL);
 		int num = input.nextInt();
+		data.setResult(num);
 		try {			
-			return novelList.get(--num);			
+			return service.after(data);		
 		} catch (Exception e) {
-			System.out.println(CHOOSE_ERORR);
-			return userChoose();
+			System.out.println(e.getMessage());
+			return userChoose(data);
 		}
 	}
-
 }

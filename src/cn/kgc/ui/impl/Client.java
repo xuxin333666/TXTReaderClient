@@ -26,7 +26,6 @@ public class Client implements Prompt{
 			preMenu = THIRD_MENU;
 		} else if(data.getStatus() == RETURN) {
 			preMenu--;
-			System.out.println(DIVIDER);
 		}
 		start();
 	}

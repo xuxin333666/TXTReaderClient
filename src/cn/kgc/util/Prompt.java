@@ -9,6 +9,8 @@ public interface Prompt {
 	int COMMAND_INDEX = 2;	//命令所在的下标
 	int ERORR = -1;		//登陆错误
 	int SUCCUSS = 0;	//登陆成功
+	int RETURN_BY_USER = 0;	//返回上一级的用户指令
+	int REPEAT = 1228;	//返回当前菜单
 	int RETURN = 1229;	//返回上一级指令
 	int SECONDARY_MENU = 1230;	//客户端二级菜单启动命令
 	int THIRD_RUN_MENU = 1231;	//客户端三级菜单启动命令
