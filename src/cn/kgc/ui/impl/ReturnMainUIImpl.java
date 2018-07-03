@@ -10,7 +10,9 @@ public class ReturnMainUIImpl implements MainUI,Prompt{
 	public DataTransmission start(String command) {
 		System.out.println(RETURN_MAIN_MENU);
 		System.out.println(DIVIDER);
-		return null;
+		DataTransmission data = new DataTransmission();
+		data.setStatus(RETURN);
+		return data;
 	}
 
 	@Override

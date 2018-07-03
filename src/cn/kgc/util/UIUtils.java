@@ -16,11 +16,9 @@ import cn.kgc.ui.intf.MainUI;
 
 public class UIUtils implements Prompt {
 	private static Map<String, String> MainList = new HashMap<>();	//主菜单功能列表
-	private static Map<String, String> commandMap = new HashMap<>();	//主菜单协议命令容器
 	private static Map<String, String> secondList = new HashMap<>();	//二级菜单功能列表
-	private static Map<String, String> secondCommandMap = new HashMap<>();	//二级协议命令容器
 	private static Map<String, String> thirdList = new HashMap<>();	//三级菜单功能列表
-	private static Map<String, String> thirdCommandMap = new HashMap<>();	//三级协议命令容器
+	private static Map<String, String> commandMap = new HashMap<>();	//协议命令容器
 	/**
 	 * 初始化界面工具类，读取菜单列表,协议命令列表
 	 */
@@ -28,9 +26,7 @@ public class UIUtils implements Prompt {
 		Properties p1 = new Properties();
 		Properties p2 = new Properties();
 		Properties p3 = new Properties();
-		Properties p4 = new Properties();
 		Properties p5 = new Properties();
-		Properties p6 = new Properties();
 		try {
 			Reader fr = new FileReader("config/mainMenu.properties");
 			p1.load(fr);
@@ -56,14 +52,7 @@ public class UIUtils implements Prompt {
 				String key = (String)iterator.next();
 				secondList.put(key, p3.getProperty(key));
 			}
-			fr = new FileReader("config/secondMenuService.properties");
-			p4.load(fr);
-			keySet = p4.keySet();
-			iterator = keySet.iterator();
-			while(iterator.hasNext()) {
-				String command = (String)iterator.next();
-				secondCommandMap.put(command, p4.getProperty(command));
-			}
+			
 			fr = new FileReader("config/thirdMenu.properties");
 			p5.load(fr);
 			keySet = p5.keySet();
@@ -71,14 +60,6 @@ public class UIUtils implements Prompt {
 			while(iterator.hasNext()) {
 				String key = (String)iterator.next();
 				thirdList.put(key, p5.getProperty(key));
-			}
-			fr = new FileReader("config/thirdMenuService.properties");
-			p6.load(fr);
-			keySet = p6.keySet();
-			iterator = keySet.iterator();
-			while(iterator.hasNext()) {
-				String command = (String)iterator.next();
-				thirdCommandMap.put(command, p6.getProperty(command));
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -139,15 +120,8 @@ public class UIUtils implements Prompt {
 	 * @param command
 	 * @return
 	 */
-	public static MainUI Parse(String command,int type) {
-		Map<String, String> map = new HashMap<>();
-		if(type == MAIN_MENU) {
-			map = commandMap;
-		} else if(type == SECOND_MENU) {
-			map = secondCommandMap;
-		} else if(type == THIRD_MENU) {
-			map = thirdCommandMap;
-		}
+	public static MainUI Parse(String command) {
+		Map<String, String> map = commandMap;
 		String serviceStr = map.get(command);
 		MainUI mainUI = null;
 		try {

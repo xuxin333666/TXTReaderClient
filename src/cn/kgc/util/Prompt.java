@@ -9,12 +9,14 @@ public interface Prompt {
 	int COMMAND_INDEX = 2;	//命令所在的下标
 	int ERORR = -1;		//登陆错误
 	int SUCCUSS = 0;	//登陆成功
+	int RETURN = 1229;	//返回上一级指令
 	int SECONDARY_MENU = 1230;	//客户端二级菜单启动命令
 	int THIRD_RUN_MENU = 1231;	//客户端三级菜单启动命令
 	
 	String TITLE = "欢迎使用在线迷你TXT小说管理器";		//开场白
 	String DIVIDER = "————————————————————————————————";	//分割线
 	String USER_CHOOSE = "请选择："; 	//用户选择提示
+	String USER_CHOOSE_NOVEL = "阅读和下载请选择文件序号，上传TXT请输入-1，返回输入0："; //用户选择小说的提示
 	String SYSTEM_QUIT = "谢谢使用";		//退出提示
 	String CHOOSE_ERORR = "找不到改功能，请重新输入选项\n";	//用户输入错误选项提示
 	String REGISTER_USERNAME_PROMPT = "请输入注册账号：";		//用户注册账户提示
@@ -25,7 +27,7 @@ public interface Prompt {
 	String LOGIN_USERNAME_PROMPT = "请输入账号：";		//用户登陆账户提示
 	String LOGIN_PASSWORD_PROMPT = "请输入密码：";		//用户登陆密码提示
 	String LOGIN_SUCCUSS = "登陆成功！！";	//用户登陆成功后的提示
-	String RETURN_MAIN_MENU = "返回上一级菜单";	//返回上一级菜单的提示
+	String RETURN_MAIN_MENU = "返回上级菜单";	//返回上一级菜单的提示
 	String GET_NOVE_ERORR = "该类型没有相应数据，请联系管理员";	//找不到小说时的提示
 	String NOVE_LIST_PRINT = "序号\t小说名\t作者\t简介";	//小说列表输出
 	String NOVEL_NAME = "name";	//小说名称的XML标签名

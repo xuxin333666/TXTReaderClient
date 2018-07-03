@@ -13,24 +13,19 @@ import cn.kgc.util.UIUtils;
 
 public class Client implements Prompt{
 	Scanner input = new Scanner(System.in);
+	private int preMenu = MAIN_MENU;
 	/**
 	 * ¿Í»§¶ËÆô¶¯
 	 */
 	@Test
 	public void start() {
-		boolean flag = true;
-		DataTransmission data = Menu(MAIN_MENU);
+		DataTransmission data = Menu(preMenu);
 		if(data.getStatus() == SECONDARY_MENU) {
-			while(flag) {
-				data = Menu(SECOND_MENU);
-				if(data !=null && data.getStatus() == THIRD_RUN_MENU) {
-					data = Menu(THIRD_MENU);
-					flag = true;
-				} else {
-					flag = false;
-				}			
-			} 
-		} else {
+			preMenu = SECOND_MENU;
+		} else if(data.getStatus() == THIRD_RUN_MENU) {
+			preMenu = THIRD_MENU;
+		} else if(data.getStatus() == RETURN) {
+			preMenu--;
 			System.out.println(DIVIDER);
 		}
 		start();
@@ -42,7 +37,7 @@ public class Client implements Prompt{
 	private DataTransmission Menu(int type) {
 		showMenu(type);
 		String command = userChoose(type);
-		MainUI mainUI = UIUtils.Parse(command,type);
+		MainUI mainUI = UIUtils.Parse(command);
 		return sendAndGetData(mainUI,command);
 	}
 	
@@ -55,7 +50,7 @@ public class Client implements Prompt{
 	 */
 	private DataTransmission sendAndGetData(MainUI mainUI,String command) {
 		DataTransmission data = mainUI.start(command);
-		if(data != null) {
+		if(data.getStatus() != RETURN) {
 			IOService iOService = new BIOServiceImpl();
 			data = iOService.open(data);
 			return mainUI.after(data);			

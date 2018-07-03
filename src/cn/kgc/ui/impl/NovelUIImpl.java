@@ -28,11 +28,10 @@ public class NovelUIImpl implements MainUI,Prompt{
 	@Override
 	public DataTransmission after(DataTransmission data) {
 		try {
-			service.after(data);
 			showNovelList(data);
 			Novel novel = userChoose();
 		} catch (Exception e) {
-			System.out.println(e.getMessage());
+			System.out.println(GET_NOVE_ERORR);
 		}
 		return data;
 	}
@@ -56,7 +55,7 @@ public class NovelUIImpl implements MainUI,Prompt{
 	 * @return √¸¡Ó
 	 */
 	private Novel userChoose() {
-		System.out.print(USER_CHOOSE);
+		System.out.print(USER_CHOOSE_NOVEL);
 		int num = input.nextInt();
 		try {			
 			return novelList.get(--num);			
