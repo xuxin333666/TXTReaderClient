@@ -14,7 +14,7 @@ import cn.kgc.util.Prompt;
 public class NovelUIImpl implements MainUI,Prompt{
 	private List<Novel> novelList = new ArrayList<>();	//小说列表
 	 Service service = new NovelServiceImpl();
-		Scanner input = new Scanner(System.in);
+	Scanner input = new Scanner(System.in);
 	 /**
 	  * 构建武侠数据传输对象
 	  */
