@@ -18,9 +18,18 @@ public class Client implements Prompt{
 	 */
 	@Test
 	public void start() {
+		boolean flag = true;
 		DataTransmission data = Menu(MAIN_MENU);
 		if(data.getStatus() == SECONDARY_MENU) {
-			Menu(SECOND_MENU);
+			while(flag) {
+				data = Menu(SECOND_MENU);
+				if(data !=null && data.getStatus() == THIRD_RUN_MENU) {
+					data = Menu(THIRD_MENU);
+					flag = true;
+				} else {
+					flag = false;
+				}			
+			} 
 		} else {
 			System.out.println(DIVIDER);
 		}

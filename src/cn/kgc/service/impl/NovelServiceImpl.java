@@ -17,7 +17,7 @@ public class NovelServiceImpl implements Service,Prompt{
 	  */
 	@Override
 	public DataTransmission after(DataTransmission data) throws Exception {
-		if(data.getStatus() == -1) {
+		if(data.getStatus() != THIRD_RUN_MENU) {
 			throw new Exception(GET_NOVE_ERORR);
 		}
 		return null;

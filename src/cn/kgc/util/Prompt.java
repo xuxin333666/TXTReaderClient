@@ -10,6 +10,7 @@ public interface Prompt {
 	int ERORR = -1;		//登陆错误
 	int SUCCUSS = 0;	//登陆成功
 	int SECONDARY_MENU = 1230;	//客户端二级菜单启动命令
+	int THIRD_RUN_MENU = 1231;	//客户端三级菜单启动命令
 	
 	String TITLE = "欢迎使用在线迷你TXT小说管理器";		//开场白
 	String DIVIDER = "————————————————————————————————";	//分割线
@@ -27,6 +28,11 @@ public interface Prompt {
 	String RETURN_MAIN_MENU = "返回上一级菜单";	//返回上一级菜单的提示
 	String GET_NOVE_ERORR = "该类型没有相应数据，请联系管理员";	//找不到小说时的提示
 	String NOVE_LIST_PRINT = "序号\t小说名\t作者\t简介";	//小说列表输出
+	String NOVEL_NAME = "name";	//小说名称的XML标签名
+	String NOVEL_AUTHOR = "author";	//小说作者的XML标签名
+	String NOVEL_DESCRIPTION = "description";	//小说简介的XML标签名
+	String NOVEL_FILENAME = "filename";	//小说文件名称的XML标签名
 	int MAIN_MENU = 1;	//主菜单
 	int SECOND_MENU = 2;	//二级菜单
+	int THIRD_MENU = 3;	//三级菜单
 }
