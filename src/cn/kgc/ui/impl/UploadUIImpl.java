@@ -58,14 +58,16 @@ public class UploadUIImpl implements MainUI,Prompt{
 		int num = input.nextInt();
 		switch(num) {
 		case UPLOAD:
-			return start(data.getCommand());
+			data.setStatus(COMMAND_AGIN);
+			break;
 		case RETURN_BY_USER:
 			data.setStatus(REPEAT);
-			return data;
+			break;
 		default:
 			System.out.println(CHOOSE_ERORR);
 			return isContinue(data);
 		}
+		return data;
 	}
 
 }
