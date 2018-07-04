@@ -13,6 +13,7 @@ public class Novel implements Serializable{
 	private String content;	//内容
 	private String type;	//类型
 	private String fileName;	//文件名称
+	private int count;	//当前阅读到第几页了
 	
 	
 	/**
@@ -74,6 +75,12 @@ public class Novel implements Serializable{
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
 	}
 	@Override
 	public String toString() {
