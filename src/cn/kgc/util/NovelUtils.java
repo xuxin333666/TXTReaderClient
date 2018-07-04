@@ -1,15 +1,20 @@
 package cn.kgc.util;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
+import java.io.Writer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+
+import cn.kgc.model.Novel;
 
 public class NovelUtils {
 	public static Map<String, String> commandMap = new HashMap<>();	//协议命令容器
@@ -72,6 +77,23 @@ public class NovelUtils {
 	 */
 	public static String getUploadCommandByCommand(String string) {	
 		return commandMap.get(string);
+	}
+	/**
+	 * 下载小说
+	 * @param string 
+	 * @param novel 
+	 * @param downloadPath 
+	 * @throws IOException 
+	 */
+	public static void downloadNovel(Novel novel, String string, String downloadPath) throws IOException {
+		Writer writer = new FileWriter(downloadPath + "/" + novel.getFileName());
+		BufferedWriter bw = new BufferedWriter(writer);
+		String[] strArr = string.split("\n");
+		for (String string2 : strArr) {
+			bw.write(string2);
+			bw.newLine();		
+		}
+		bw.close();
 	}
 	
 	
